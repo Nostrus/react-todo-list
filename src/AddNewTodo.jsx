@@ -18,6 +18,9 @@ const AddNewTodo = ({ addTodo }) => {
             title,
             description,
         });
+
+        setTitle('');
+        setDescription('');
     };
 
     return (
