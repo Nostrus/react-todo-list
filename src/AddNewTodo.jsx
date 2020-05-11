@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from './Button';
 import styled from 'styled-components';
+import { TODO_ADD } from './Actions';
 
 const Input = styled.input`
     padding: 0.5em 1em;
@@ -13,10 +14,13 @@ const AddNewTodo = ({ addTodo }) => {
 
     const handleAddTodo = () => {
         addTodo({
-            completed: false,
-            id: uuidv4(),
-            title,
-            description,
+            type: TODO_ADD,
+            payload: {
+                completed: false,
+                id: uuidv4(),
+                title,
+                description,
+            },
         });
 
         setTitle('');

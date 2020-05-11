@@ -1,16 +1,10 @@
 import React from 'react';
 import Todo from './Todo';
+import { TODO_TOGGLE } from './Actions';
 
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todos, dispatch }) => {
     const toggleCompleted = (id) => {
-        const newTodos = [...todos];
-        newTodos.forEach((todoItem) => {
-            if (todoItem.id === id) {
-                todoItem.completed = !todoItem.completed;
-            }
-        });
-
-        setTodos(newTodos);
+        dispatch({ type: TODO_TOGGLE, payload: { id } });
     };
 
     return todos

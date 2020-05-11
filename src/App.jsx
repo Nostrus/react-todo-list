@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import TodoList from './TodoList';
 import styled from 'styled-components';
 import AddNewTodo from './AddNewTodo';
+import TodoReducer from './TodoReducer';
 
 const Wrapper = styled.div`
     width: 500px;
@@ -10,16 +11,12 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-    const [todos, setTodos] = useState([]);
-
-    const addTodo = (todo) => {
-        setTodos([...todos, todo]);
-    };
+    const [todos, dispatch] = useReducer(TodoReducer, []);
 
     return (
         <Wrapper>
-            <AddNewTodo addTodo={addTodo} />
-            <TodoList todos={todos} setTodos={setTodos} />
+            <AddNewTodo addTodo={dispatch} />
+            <TodoList todos={todos} dispatch={dispatch} />
         </Wrapper>
     );
 }
