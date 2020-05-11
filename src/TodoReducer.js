@@ -11,7 +11,7 @@ const TodoReducer = (state, action) => {
 
     if (action.type === TODO_TOGGLE) {
         return state.map((todo) => {
-            if (todo.id === !action.payload.id) {
+            if (todo.id !== action.payload.id) {
                 return todo;
             }
             return { ...todo, completed: !todo.completed };
